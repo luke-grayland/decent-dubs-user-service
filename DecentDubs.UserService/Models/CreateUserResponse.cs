@@ -4,6 +4,6 @@ namespace DecentDubs.UserService.Models;
 
 public class CreateUserResponse
 {
-    [JsonPropertyName("walletID")]
-    public string WalletID { get; set; }
+    [JsonPropertyName("walletId")]
+    public string WalletId { get; set; }
 }

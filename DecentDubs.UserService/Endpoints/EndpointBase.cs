@@ -6,7 +6,7 @@ namespace DecentDubs.UserService;
 
 public abstract class EndpointBase(ILoggerFactory loggerFactory)
 {
-    private readonly ILogger _logger = loggerFactory.CreateLogger<User>();
+    private readonly ILogger _logger = loggerFactory.CreateLogger<EndpointBase>();
     
     internal string LogAndReturnError(Exception ex, string endpoint)
     {
