@@ -4,6 +4,6 @@ namespace DecentDubs.UserService.Models;
 
 public class CreateUserRequest
 {
-    [JsonPropertyName("walletId")]
-    public string WalletId { get; set; }
+    [JsonPropertyName("user")]
+    public User User { get; set; } = new();
 }

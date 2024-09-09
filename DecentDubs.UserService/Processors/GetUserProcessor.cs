@@ -8,7 +8,7 @@ public class GetUserProcessor(IUserRepository userRepository) : IGetUserProcesso
 {
     public GetUserResponse Process(string walletId)
     {
-        var user = userRepository.GetUser();
+        var user = userRepository.GetUser(walletId);
         
         return new GetUserResponse();
     }

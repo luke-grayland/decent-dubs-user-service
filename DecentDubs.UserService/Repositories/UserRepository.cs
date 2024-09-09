@@ -1,17 +1,18 @@
 using DecentDubs.UserService.Models;
 using DecentDubs.UserService.Repositories.Interfaces;
+using DecentDubs.UserService.Utilities;
 
 namespace DecentDubs.UserService.Repositories;
 
-public class UserRepository : IUserRepository
+public class UserRepository(DecentDubsDbContext dbContext) : IUserRepository
 {
-    public void CreateUser()
+    public void CreateUser(User user)
     {
-        throw new NotImplementedException();
+        dbContext.Add(user);
     }
- 
-    public User GetUser()
+    
+    public User? GetUser(string walletId)
     {
-        throw new NotImplementedException();
+        return dbContext.Users.Find(walletId);
     }
 }

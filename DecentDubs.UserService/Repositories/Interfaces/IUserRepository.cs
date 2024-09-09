@@ -4,6 +4,6 @@ namespace DecentDubs.UserService.Repositories.Interfaces;
 
 public interface IUserRepository
 {
-    void CreateUser();
-    User GetUser();
+    void CreateUser(User user);
+    User? GetUser(string walletId);
 }

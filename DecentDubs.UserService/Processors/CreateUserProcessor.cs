@@ -6,14 +6,17 @@ namespace DecentDubs.UserService.Processors;
 
 public class CreateUserProcessor(IUserRepository userRepository) : ICreateUserProcessor
 {
-    public CreateUserResponse Process(CreateUserRequest request)
+    public async Task<CreateUserResponse> Process(CreateUserRequest request)
     {
-        //check if user already has account
-        //if not, add user
+        if (userRepository.GetUser(request.User.WalletId ?? "") != null)
+            throw new Exception($"Existing user with found with wallet ID: {request.User.WalletId}");
+            
+        request.User.Created = DateTime.UtcNow;
+        userRepository.CreateUser(request.User);
         
         return new CreateUserResponse()
         {
-            WalletId = request.WalletId
+            WalletId = request.User.WalletId
         };
     }
 }
