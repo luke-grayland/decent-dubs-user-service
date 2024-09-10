@@ -1,22 +1,25 @@
 using DecentDubs.UserService.Models;
 using DecentDubs.UserService.Processors.Interfaces;
 using DecentDubs.UserService.Repositories.Interfaces;
+using DecentDubs.UserService.Utilities.Interfaces;
 
 namespace DecentDubs.UserService.Processors;
 
-public class CreateUserProcessor(IUserRepository userRepository) : ICreateUserProcessor
+public class CreateUserProcessor(IUserRepository userRepository, ISanitiser sanitiser) : ICreateUserProcessor
 {
-    public async Task<CreateUserResponse> Process(CreateUserRequest request)
+    public CreateUserResponse Process(CreateUserRequest request)
     {
-        if (userRepository.GetUser(request.User.WalletId ?? "") != null)
-            throw new Exception($"Existing user with found with wallet ID: {request.User.WalletId}");
-            
-        request.User.Created = DateTime.UtcNow;
-        userRepository.CreateUser(request.User);
+        var cleanRequest = sanitiser.Sanitise(request);
+        var walletId = cleanRequest?.User?.WalletId ?? throw new Exception("Wallet ID missing in request");
+        
+        if (userRepository.GetUser(walletId) != null)
+            throw new BusinessException($"Existing user with found with wallet ID: {request?.User?.WalletId}");
+        
+        userRepository.CreateUser(cleanRequest.User);
         
         return new CreateUserResponse()
         {
-            WalletId = request.User.WalletId
+            User = cleanRequest.User
         };
     }
 }

@@ -4,5 +4,5 @@ namespace DecentDubs.UserService.Processors.Interfaces;
 
 public interface ICreateUserProcessor
 {
-    Task<CreateUserResponse> Process(CreateUserRequest request);
+    CreateUserResponse Process(CreateUserRequest request);
 }

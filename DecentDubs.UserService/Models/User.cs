@@ -26,7 +26,7 @@ public class User
 
     [MaxLength(1000)]
     [JsonPropertyName("profilePicUrl")]
-    public string? ProfilePicURrl{ get; set; }
+    public string? ProfilePicUrl{ get; set; }
 
     [JsonPropertyName("verified")]
     public bool Verified { get; set; } = false;

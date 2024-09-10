@@ -6,7 +6,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 
-namespace DecentDubs.UserService;
+namespace DecentDubs.UserService.Endpoints;
 
 public class CreateUserFunction(ILoggerFactory loggerFactory, ICreateUserProcessor createUserProcessor) : EndpointBase(loggerFactory)
 {
@@ -19,8 +19,12 @@ public class CreateUserFunction(ILoggerFactory loggerFactory, ICreateUserProcess
         try
         {
             _logger.LogInformation("Create User request received");
-            var createUserRequest = JsonSerializer.Deserialize<CreateUserRequest>(await new StreamReader(req.Body).ReadToEndAsync());
+            
+            var createUserRequest = JsonSerializer.Deserialize<CreateUserRequest>(await new StreamReader(req.Body).ReadToEndAsync())
+                ?? throw new Exception("Unable to deserialize CreateUserRequest");
+                
             var createUserResponse = createUserProcessor.Process(createUserRequest);
+            
             return await CreateSuccessResponse(req, createUserResponse);
         }
         catch (BusinessException ex)
@@ -32,4 +36,6 @@ public class CreateUserFunction(ILoggerFactory loggerFactory, ICreateUserProcess
             return await CreateErrorResponse(req, LogAndReturnError(ex, "CreateUser"), HttpStatusCode.InternalServerError);
         }
     }
+    
+    
 }

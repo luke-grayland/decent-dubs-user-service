@@ -2,7 +2,7 @@ using System.Net;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 
-namespace DecentDubs.UserService;
+namespace DecentDubs.UserService.Endpoints;
 
 public abstract class EndpointBase(ILoggerFactory loggerFactory)
 {

@@ -5,5 +5,5 @@ namespace DecentDubs.UserService.Models;
 public class CreateUserRequest
 {
     [JsonPropertyName("user")]
-    public User User { get; set; } = new();
+    public User? User { get; set; }
 }
