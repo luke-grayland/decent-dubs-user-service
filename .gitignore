@@ -1,0 +1,74 @@
+# .NET Core
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.log
+*.dmp
+*.swp
+*.suo
+*.user
+*.userosscache
+*.suo
+*.dbmdl
+*.cache
+*.csproj.user
+*.csproj
+*.suo
+*.xproj
+*.vs
+.vscode/
+
+# Azure Functions
+local.settings.json
+host.json
+extensions.csproj
+
+# Rider
+.idea/
+*.sln.iml
+
+# Visual Studio Code
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Node.js dependencies
+node_modules/
+
+# Package files
+*.nupkg
+*.snupkg
+
+# Others
+*.log
+*.tmp
+*.bak
+*.swp
+*.tmp
+*.pid
+*.seed
+*.coverage
+*.rpt
+
+# MacOS
+*.DS_Store
+
+# Windows
+*.log
+*.tmp
+*.bak
+
+# Other IDEs and editors
+*.sublime-project
+*.sublime-workspace
+*.kdev4
+*.project
+*.classpath
+*.idea
+*.launch
+*.settings/
+
