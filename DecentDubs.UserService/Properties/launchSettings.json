@@ -1,9 +1,0 @@
-{
-  "profiles": {
-    "DecentDubs.UserService": {
-      "commandName": "Project",
-      "commandLineArgs": "--port 7195",
-      "launchBrowser": false
-    }
-  }
-}
