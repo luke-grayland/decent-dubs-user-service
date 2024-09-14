@@ -1,9 +1,0 @@
-{
-    "IsEncrypted": false,
-    "Values": {
-        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-        "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
-        "DB_CONNECTION_STRING": "Server=tcp:decentdubs-dev.database.windows.net,1433;Initial Catalog=DecentDubs;Persist Security Info=False;User ID=CloudSA8bfcdc7f;Password=hG!87fghsdhbsjbc;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
-        "UserServiceSettings::TEST": "test on toast"
-    }
-}
