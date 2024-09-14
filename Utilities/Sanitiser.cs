@@ -29,7 +29,7 @@ public class Sanitiser : ISanitiser
         if (string.IsNullOrEmpty(input)) 
             return input;
         
-        const string pattern = @"[^\w@.\-,;:()\[\]{}\s'\p{Sc}]";
+        const string pattern = @"[^\w@.\-,;:()\s'\p{Sc}]";
         return Regex.Replace(input, pattern, "");
     }
 }
