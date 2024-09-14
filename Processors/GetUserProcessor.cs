@@ -12,8 +12,7 @@ public class GetUserProcessor(IUserRepository userRepository, ISanitiser sanitis
         if (string.IsNullOrEmpty(walletId))
             throw new Exception("Unable to get Wallet ID from request query parameter");
 
-        var user = userRepository.GetUser(sanitiser.Sanitise(walletId) ?? "")
-                   ?? throw new BusinessException("User not found");
+        var user = userRepository.GetUser(sanitiser.Sanitise(walletId) ?? "");
 
         return new GetUserResponse()
         {

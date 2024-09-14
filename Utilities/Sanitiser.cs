@@ -9,7 +9,7 @@ public class Sanitiser : ISanitiser
     public CreateUserRequest Sanitise(CreateUserRequest request)
     {
         var user = request.User;
-        if (user == null) return request;
+        if (user == null) return request; 
         
         user.WalletId = SanitiseForSql(request.User?.WalletId);    
         user.Username = SanitiseForSql(request.User?.Username);    
@@ -29,7 +29,7 @@ public class Sanitiser : ISanitiser
         if (string.IsNullOrEmpty(input)) 
             return input;
         
-        const string pattern = @"[^\w@.\-,;:()\[\]{}\s'\p{Sc}]";
+        const string pattern = @"[^\w@.\-,;:()\s'\p{Sc}]";
         return Regex.Replace(input, pattern, "");
     }
 }
