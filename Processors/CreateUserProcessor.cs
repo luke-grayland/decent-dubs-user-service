@@ -9,6 +9,7 @@ public class CreateUserProcessor(IUserRepository userRepository, ISanitiser sani
 {
     public CreateUserResponse Process(CreateUserRequest request)
     {
+        if (request.User == null) throw new Exception("User missing in CreateUserRequest");
         var cleanRequest = sanitiser.Sanitise(request);
         var walletId = cleanRequest?.User?.WalletId ?? throw new Exception("Wallet ID missing in request");
         

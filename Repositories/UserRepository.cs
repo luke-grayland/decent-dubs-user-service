@@ -28,4 +28,10 @@ public class UserRepository(DecentDubsDbContext dbContext) : IUserRepository
     {
         return dbContext.Users.Find(walletId);
     }
+
+    public void CreateUserSession(UserSession userSession)
+    {
+        dbContext.UserSessions.Add(userSession);
+        dbContext.SaveChanges();
+    }
 }

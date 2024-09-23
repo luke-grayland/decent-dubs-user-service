@@ -16,6 +16,7 @@ var host = new HostBuilder()
         services.AddScoped<IGetUserProcessor, GetUserProcessor>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ISanitiser, Sanitiser>();
+        services.AddScoped<ICreateSessionProcessor, CreateSessionProcessor>();
         
         var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
         services.AddDbContext<DecentDubsDbContext>(options => 
