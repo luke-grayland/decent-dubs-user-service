@@ -15,6 +15,7 @@ public class CreateSessionProcessor(IUserRepository userRepository) : ICreateSes
         {
             SessionId = Guid.NewGuid().ToString(),
             WalletId = request.WalletId,
+            CreatedDate = DateTime.Now,
             ExpiryDate = DateTime.Now.AddDays(1)
         };
         

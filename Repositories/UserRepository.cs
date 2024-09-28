@@ -12,7 +12,7 @@ public class UserRepository(DecentDubsDbContext dbContext) : IUserRepository
         {
             WalletId = user.WalletId,
             Username = user.Username,
-            Created = DateTime.Now,
+            Created = user.Created,
             IsAdmin = false,
             Email = user.Email,
             ProfilePicUrl = user.ProfilePicUrl,
@@ -33,5 +33,11 @@ public class UserRepository(DecentDubsDbContext dbContext) : IUserRepository
     {
         dbContext.UserSessions.Add(userSession);
         dbContext.SaveChanges();
+    }
+
+    public UserSession? GetUserSession(string sessionId)
+    {
+        return dbContext.UserSessions.FirstOrDefault(x => 
+            x.SessionId == sessionId && x.ExpiryDate > DateTime.Now); 
     }
 }

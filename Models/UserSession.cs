@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace DecentDubs.UserService.Models;
 
@@ -11,5 +12,10 @@ public class UserSession
     [MaxLength(50)]
     public string WalletId { get; set; } = null!;
 
+    public DateTime CreatedDate { get; set; }
+    
     public DateTime ExpiryDate { get; set; }
+
+    [JsonIgnore]
+    private User User { get; set; }
 }

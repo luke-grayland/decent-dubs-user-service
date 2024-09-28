@@ -17,10 +17,11 @@ var host = new HostBuilder()
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ISanitiser, Sanitiser>();
         services.AddScoped<ICreateSessionProcessor, CreateSessionProcessor>();
+        services.AddScoped<IGetSessionProcessor, GetSessionProcessor>();
         
         var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
-        services.AddDbContext<DecentDubsDbContext>(options => 
-            options.UseSqlServer(connectionString));
+        services.AddDbContext<DecentDubsDbContext>(options => options.UseSqlServer(connectionString));
+        
         services.Configure<UserServiceSettings>(options =>
         {
             options.Test = Environment.GetEnvironmentVariable("UserServiceSettings:TEST") 

@@ -16,6 +16,7 @@ public class CreateUserProcessor(IUserRepository userRepository, ISanitiser sani
         if (userRepository.GetUser(walletId) != null)
             throw new BusinessException($"Existing user with found with wallet ID: {request?.User?.WalletId}");
         
+        cleanRequest.User.Created = DateTime.Now;
         userRepository.CreateUser(cleanRequest.User);
         
         return new CreateUserResponse()
